@@ -97,7 +97,7 @@ foreign key (item_id) references Item(item_id)
 
 #drop table Orders;
 create table Orders (
-order_id int NOT NULL,
+order_id int NOT NULL auto_increment,
 user_id int NOT NULL,
 status varchar(10) NOT NULL DEFAULT 'in prog',
 delivery_time datetime DEFAULT (DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 10 DAY)),
