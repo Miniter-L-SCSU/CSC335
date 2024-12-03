@@ -19,6 +19,11 @@
             <p> TODO: need to develop the php for getting a few items from db  </p>
             <!-- TODO items will go here  -->
 
+            <?php
+            echo "My first PHP script!";
+            ?>
+
+
             <p><a href="./items.html">See List of Items </a></p> 
         </div>
 
