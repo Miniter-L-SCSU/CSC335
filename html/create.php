@@ -18,7 +18,7 @@
         <input type="text" id="email"></input> 
         <br/> <br/>
         <button type="button" id="account_submit" > Submit </button>
-        <p><a href="./login.html">Go back?</a></p> 
+        <p><a href="./login.php">Go back?</a></p> 
 
     </body>
 </html>

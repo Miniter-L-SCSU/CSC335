@@ -9,7 +9,9 @@
         <div>
             <label>Search</label>
             <input type="text" id="item_search"></input> 
-            <button type="button" id="homepage" > Home Page </button>
+            <a href="home.php">
+                <button>Home Page</button>
+            </a>
             <button type="button" id="login" > Login/Logout </button>
         </div>
 

@@ -8,11 +8,17 @@
     </head>
     <body>
         <div>
-            <button type="button" id="account" > Account Page </button>
+            <a href="account.php">
+                <button>Account Page</button>
+            </a>
             <label>Search</label>
             <input type="text" id="item_search"></input> 
-            <button type="button" id="homepage" > Home Page </button>
-            <button type="button" id="itempage" > Item Page </button>
+            <a href="home.php">
+                <button value="Redirect">Home Page</button>
+            </a>
+            <a href="items.php">
+                <button>Item Page</button>
+            </a>
             <button type="button" id="login" > Login/Logout </button>
         </div>
 

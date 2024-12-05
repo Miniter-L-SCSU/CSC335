@@ -15,7 +15,7 @@
         <input type="text" id="password"></input> 
         <br/> <br/>
         <button type="button" id="login_submit" > Submit </button>
-        <p><a href="./create.html">Need an account?</a></p> 
+        <p><a href="./create.php">Need an account?</a></p> 
 
     </body>
 </html>
