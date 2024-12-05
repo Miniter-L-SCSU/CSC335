@@ -19,6 +19,9 @@
             <a href="items.php">
                 <button>Item Page</button>
             </a>
+            <a href="cart.php">
+                <button>Cart</button>
+            </a>
             <button type="button" id="login" > Login/Logout </button>
         </div>
 

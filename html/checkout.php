@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"></html>
-<!-- If we have time I'll style it - Kaye -->
 <html>
     <head>
-        <title> CSC335 - List of all items </title>
+        <title> CSC335 - Checkout </title>
         <link rel="stylesheet" href="styling.css">
     </head>
     <body>
@@ -11,20 +10,23 @@
             <a href="account.php">
                 <button>Account Page</button>
             </a>
-            <label>Search</label>
-            <input type="text" id="item_search"></input> 
             <a href="home.php">
                 <button>Home Page</button>
-            </a>
-            <a href="cart.php">
-                <button>Cart</button>
             </a>
             <button type="button" id="login" > Login/Logout </button>
         </div>
 
         <div class="center">
-            <p> TODO: need to develop getting items from db with php </p>
-            <!-- TODO items will go here  -->
+            <a href="cart.php">
+                <button>Go Back To Cart</button>
+            </a>
+
+            <p> TODO: need to add all of this logic to choose shipping and billing info and add it if neededs  </p>
+            <!-- todo add all of this logic -->
+
+            <a href="order-placed.php">
+                <button>Place Order</button>
+            </a>
 
         </div>
 
