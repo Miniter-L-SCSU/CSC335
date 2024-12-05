@@ -15,7 +15,9 @@
             <a href="home.php">
                 <button>Home Page</button>
             </a>
-            <button type="button" id="login" > Login/Logout </button>
+            <a href="login.php">
+                <button type="button"> Login/Logout </button>
+            </a>
         </div>
 
         <div class="center">

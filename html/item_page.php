@@ -22,12 +22,16 @@
             <a href="cart.php">
                 <button>Cart</button>
             </a>
-            <button type="button" id="login" > Login/Logout </button>
+            <a href="login.php">
+                <button type="button"> Login/Logout </button>
+            </a>
         </div>
 
          <div>
+                <p> todo develop php to show item details </p>
                 <!-- todo develop php to show item detail -->
                 <!-- note to self, details to grab, item_name, price, category, manufacturer-->
+                <!-- also add to cart button -->
          </div>
 
     </body>

@@ -15,7 +15,9 @@
             <a href="cart.php">
                 <button>Cart</button>
             </a>
-            <button type="button" id="login" > Login/Logout </button>
+            <a href="login.php">
+                <button type="button"> Login/Logout </button>
+            </a>
         </div>
 
         <div class="center">
@@ -24,7 +26,7 @@
             <a href="order-history.php">
                 <button>Order History</button>
             </a>
-            <!-- todo fetch billing and shipping info and handle editting them --> 
+            <!-- todo fetch billing , payment, and shipping info and handle editting them --> 
             
 
         </div>

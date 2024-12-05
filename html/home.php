@@ -18,7 +18,7 @@
         <label>Search</label>
         <input type="text" id="item_search"></input> 
         <a href="cart.php">
-                <button>Cart</button>
+            <button>Cart</button>
         </a>
         <a href="login.php">
             <button type="button"> Login/Logout </button>
