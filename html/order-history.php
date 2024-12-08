@@ -25,6 +25,14 @@
 
         <div class="center">
             <p> TODO: show user's orders in table </p>
+            <?php
+                include './connect_to_db.php';
+
+                $db_name = 'shop';
+
+                $conn = get_db_connection($db_name);
+
+            ?>
             <!-- todo php to fetch info like username, full name, for viewing and editing -->
         </div>
 

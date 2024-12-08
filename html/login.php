@@ -6,6 +6,15 @@
 </head>
 
 <?php
+    include './connect_to_db.php';
+
+    $db_name = 'shop';
+
+    $conn = get_db_connection($db_name);
+
+?>
+
+<?php
 
 session_start();
 

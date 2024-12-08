@@ -23,6 +23,14 @@
         <div class="center">
             <p> Congratulations! Your order was placed </p>
             <!-- todo php to fetch order info -->
+            <?php
+                include './connect_to_db.php';
+
+                $db_name = 'shop';
+
+                $conn = get_db_connection($db_name);
+
+            ?>
 
             <a href="home.php">
                 <button>Go back to home page</button>

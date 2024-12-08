@@ -25,7 +25,15 @@
 
             <p> TODO: need to add all of this logic to choose shipping and billing info and add it if neededs  </p>
             <!-- todo add all of this logic -->
+            <?php
+                include './connect_to_db.php';
 
+                $db_name = 'shop';
+
+                $conn = get_db_connection($db_name);
+
+            ?>
+            
             <a href="order-placed.php">
                 <button>Place Order</button>
             </a>

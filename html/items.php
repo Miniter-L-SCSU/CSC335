@@ -25,8 +25,35 @@
         </div>
 
         <div class="center">
-            <p> TODO: need to develop getting items from db with php </p>
-            <!-- TODO items will go here  -->
+            <?php
+                include './connect_to_db.php';
+
+                $db_name = 'shop';
+
+                $conn = get_db_connection($db_name);
+
+                $stmt = $conn->prepare("SELECT item_id, item_name, price, available_quantity FROM Item");
+
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    echo "<form action=\"./item_page.php\">";
+                     while($row = $result->fetch_assoc()) {   
+                        //flexbox not working idk
+                        // open to changing it from value = item id to item name, dunno if names could be redundant
+                        echo "<div style=\"border:solid; margin: 3px;\">" . "<button name=\"itm\" style=\"background:white; type=\"submit\" value=\"" . $row["item_id"] . "\">" . "Item Name: " . $row["item_name"] . "</button>" . " <p>" . $row["price"] . " </p><p> Available Quantity: " . $row["available_quantity"] . "</p>" . "</div>";
+                        
+                    }
+                    echo "</form>";
+                } else {
+                    echo "0 results";
+                }
+
+                $stmt->close();
+                $conn->close();
+                ?>
+            
 
         </div>
 

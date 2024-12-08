@@ -7,6 +7,15 @@
         <link rel="stylesheet" href="styling.css">
     </head>
     <body>
+        <?php
+            include './connect_to_db.php';
+
+            $db_name = 'shop';
+
+            $conn = get_db_connection($db_name);
+
+        ?>
+
         <h4><b>Create an Account</b></h4>
         <label>Username</label>
         <input type="text" id="username"></input> 

@@ -24,6 +24,15 @@
             <p> TODO: need to develop getting items from db with php </p>
             <!-- todo php to fetch whats in user carts -->
 
+            <?php
+                include './connect_to_db.php';
+
+                $db_name = 'shop';
+
+                $conn = get_db_connection($db_name);
+
+            ?>
+
             <a href="checkout.php">
                 <button>Checkout</button>
             </a>

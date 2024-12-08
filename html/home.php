@@ -26,13 +26,8 @@
         </div>
 
     <div class="center">
-        <p> TODO: need to develop the php for getting a few items from db  </p>
+        <p> Ideally we would have some items here...  </p>
         <!-- TODO items will go here  -->
-
-        <?php
-        echo "My first PHP script! - i'll remove this later";
-        ?>
-
 
         <p><a href="./items.php">See List of Items </a></p> 
     </div>

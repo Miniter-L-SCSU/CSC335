@@ -21,6 +21,15 @@
         </div>
 
         <div class="center">
+
+            <?php
+                include './connect_to_db.php';
+
+                $db_name = 'shop';
+
+                $conn = get_db_connection($db_name);
+
+            ?>
             <p> TODO: need to develop getting items from db with php </p>
             <!-- todo php to fetch info like username, full name, for viewing and editing -->
             <a href="order-history.php">
