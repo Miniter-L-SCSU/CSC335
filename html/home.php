@@ -8,7 +8,7 @@
     <div class="center">
         <?php
             session_start();
-            echo "Welcome to the Shop ".$_SESSION["username"] . $_SESSION["user_id"];
+            echo "Welcome to the Shop ".$_SESSION["username"] . " : " . $_SESSION["user_id"];
         ?>
     </div>
     <div>

@@ -30,6 +30,8 @@
 
                 $db_name = 'shop';
 
+                session_start();
+
                 $conn = get_db_connection($db_name);
 
                 $stmt = $conn->prepare("SELECT item_id, item_name, price, available_quantity FROM Item");
