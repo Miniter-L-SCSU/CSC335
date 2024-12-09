@@ -36,6 +36,7 @@
 
                 $stmt->execute();
                 $result = $stmt->get_result();
+                echo $_SESSION["username"];
 
                 if ($result->num_rows > 0) {
                     echo "<form action=\"./item_page.php\">";

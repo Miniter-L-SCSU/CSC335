@@ -1,9 +1,8 @@
+<?php
 
+session_start();
 
-<head>
-    <title> CSC335 - Login Page </title>
-    <link rel="stylesheet" href="styling.css">
-</head>
+?>
 
 <?php
     include './connect_to_db.php';
@@ -16,12 +15,6 @@
 
 <?php
 
-session_start();
-
-?>
-
-<?php
-
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$_SESSION["username"] = $_POST['username'];
 	$_SESSION["pass"] = $_POST['password'];
@@ -29,13 +22,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$pass=crypt($_SESSION["pass"],'$1$somethin$');
 
 	//now compare this md5 hash with the stored hashed password for this user (if this user exists)
+	// following code is broken so its commented out
+	// it attempts to grab user_id
+	/*
+	$stmt = $conn->prepare("SELECT username, user_id, pw FROM User WHERE username=?");
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param("s", $_SESSION["username"]);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	if ($result->num_rows > 0) {
+		
+		while($row = $result->fetch_assoc()) {
+			$_SESSION["user_id"] = $row["user_id"];
 
-	// forward the user to home page if login was successful.
-	header("Location: home.php");
-	
+			// ideally also add pw checking logic
+		}
+		
+	} else {
+		echo "";
+	}
+	*/
+	header("Location: ./home.php");
+
 	
 }else{
-
 //remove all session variables
 session_unset(); 
 
@@ -43,6 +53,11 @@ session_unset();
 session_destroy(); 
 
 ?>
+
+<head>
+	<title> CSC335 - Login Page </title>
+    <link rel="stylesheet" href="styling.css">
+</head>
 
 <div>
 <form action="login.php" method="POST" style="position:relative;left:20px;">
