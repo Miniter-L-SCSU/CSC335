@@ -5,3 +5,31 @@
   padding: 10px;
   text-align: center;
 }
+
+.item-image {
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  max-width: 500; 
+  height: 200;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.item-card {
+  display: inline-grid;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin: auto;
+}
