@@ -49,14 +49,25 @@
                     header("Location: " . './cart.php');
                     
                 } else {
-                    echo "todo .. there are results";
+                    
+                    while($row = $result->fetch_assoc()) {
+                        
+                        echo "<br/>Item: " . $row["item_id"] . " <br/>";
+                        echo "<br/>Quantity: " . $row["quantity"] . " <br/>";
+                        // t.odo add price and other stuff about the item
+                        // not to mention billing stuff
+
+                    }
                 }
 
             ?>
-            
-            <a href="order-placed.php">
-                <button>Place Order</button>
-            </a>
+            <br/>
+            <?php
+                echo "<form action='./order-placed.php'>";
+                echo "<button>Place Order</button>";
+                echo "</form>";
+            ?>
+        
 
         </div>
 

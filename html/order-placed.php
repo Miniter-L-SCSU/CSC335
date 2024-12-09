@@ -30,6 +30,21 @@
 
                 $conn = get_db_connection($db_name);
 
+                session_start();
+
+                if ($_SESSION["username"] == ""){
+                    // can't check out if you're not logged in!
+                    
+                    header("Location: " . './login.php');
+                }
+
+                /*
+                    T.ODO 
+                    validate order being placed 
+                    affect actual quantity 
+                    show the ordered items
+                */
+
             ?>
 
             <a href="home.php">
