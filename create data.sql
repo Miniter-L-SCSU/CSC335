@@ -17,6 +17,12 @@ insert into Item (item_name, price, category, manufacturer) values
 ("USB-c cable", 12.99, "Tech Accessories", "Samsung"),
 ("Tool set", 26.99, "Tools", "KOBALT"),
 ("Watch", 100.00, "Accessories", "OverPriced Watches");
+insert into Item (item_name, price, category, manufacturer, file_name) values 
+("Mini Christmas Tree", 40.99, "decor", "Tree Company","81mGNwUqLqL._AC_UL480_QL65_.jpg"),
+("IceFlow Flip Straw Tumbler", 26.29, "Accessories", "Stanley","51SxIyLWwUL._AC_SL1500_.jpg"),
+("Cordless Drill and Impact Driver", 129.00, "Accessories", "DEWALT","81+vTBpIB9L._AC_SL1500_.jpg");
+update Item set file_name = "test.png" where item_name = "USB-c cable";
+update Item set file_name = "test.png" where item_name = "USB-c cable";
 #select * from Item;
 
 insert into BillAddr (user_id, bill_seq, street, city, state, zip) values 
