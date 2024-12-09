@@ -64,10 +64,17 @@
             ?>
             <br/><br/>
             <!-- todo add validation -->
+            <!--
             <a href="checkout.php">
                 <button>Checkout</button>
-                <input type="int"> <!--?? what's this? -->
+                <input type="int">
             </a>
+            -->
+            <?php
+                echo "<form action='./checkout.php'>";
+                echo "<button>Checkout</button>";
+                echo "</form>";
+            ?>
         
 
         </div>

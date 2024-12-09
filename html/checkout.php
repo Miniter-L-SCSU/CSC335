@@ -32,6 +32,26 @@
 
                 $conn = get_db_connection($db_name);
 
+                session_start();
+                
+                if ($_SESSION["username"] == ""){
+                    // can't check out if you're not logged in!
+                    
+                    header("Location: " . './login.php');
+                }
+
+                // check if cart is empty, if not redirect back
+                $stmt = $conn->prepare("SELECT * FROM Cart WHERE user_id=?");
+                $stmt->bind_param("s", $_SESSION["user_id"]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows == 0) {
+                    header("Location: " . './cart.php');
+                    
+                } else {
+                    echo "todo .. there are results";
+                }
+
             ?>
             
             <a href="order-placed.php">
