@@ -31,8 +31,41 @@
 
                 $conn = get_db_connection($db_name);
 
-            ?>
+                session_start();
 
+                $stmt = $conn->prepare("SELECT user_id, item_id, quantity FROM Cart WHERE user_id=?");
+                $stmt->bind_param("s", $_SESSION["user_id"]);
+	            $stmt->execute();
+
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    
+                    echo "<form action=\"./item_page.php\">";
+                    echo "<div class='main-content'>";
+                     while($row = $result->fetch_assoc()) {   
+                        //flexbox not working idk
+                        // open to changing it from value = item id to item name, dunno if names could be redundant
+                        echo "<div class = 'item-card' style=\"border:solid; margin: 3px;\">" . 
+                        "<button name=\"itm\" style=\"background:white; type=\"submit\" value=\"" . $row["item_id"] . "\">"
+                        . "Item ID " . $row["item_id"] . "</button>"
+                         . "<p>" . $row["quantity"] . "</p>" . "</div>";
+                        
+                    }
+                    echo "</div>";
+                    echo "</form>";
+                    // todo edit cart quantity and change action
+                } else {
+                    echo "You have nothing in your cart";
+                }
+
+                $stmt->close();
+                $conn->close();
+            
+            ?>
+            <br/><br/>
+            <!-- todo add validation -->
             <a href="checkout.php">
                 <button>Checkout</button>
                 <input type="int">
