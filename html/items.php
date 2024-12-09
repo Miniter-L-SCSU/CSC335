@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en"></html>
 <!-- If we have time I'll style it - Kaye -->
