@@ -35,6 +35,7 @@
 
             <a href="checkout.php">
                 <button>Checkout</button>
+                <input type="int">
             </a>
 
         </div>

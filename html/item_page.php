@@ -55,7 +55,13 @@
                     // not sure if we need an add to cart specific page
                     echo "<form action=\"./add_to_cart.php\">";
                     while($row = $result->fetch_assoc()) {
-                        echo "<div>" . $row["item_name"] . "<br/> Description: " . $row["item_desc"] . "<br/> Category: " . $row["category"] . "<br/>". $row["price"] . "<br/> Available Quantity: " . $row["available_quantity"] . "<br/> Actual Quantity: " . $row["actual_quantity"] . "<br/> Manufacturer: " . $row["manufacturer"] . "<br/>" . "<button type=\"submit\" value=\"" . $row["item_id"] . "\">" . "Add to Cart " . "</button>" . "</div>";
+                        echo "<div>" . $row["item_name"] . "<br/> Description: " . $row["item_desc"] . "<br/>" . 
+                        " Category: " . $row["category"] . "<br/>". 
+                        $row["price"] . "<br/> Available Quantity: " . 
+                        $row["available_quantity"] . "<br/> Actual Quantity: " . $row["actual_quantity"] . 
+                        "<br/> Manufacturer: " . $row["manufacturer"] . "<br/>" . 
+                        "<button name= 'itm' type= 'submit' value= '" . $row["item_id"] . "'>" . "Add to Cart " . "</button> 
+                        Quantity: <input name= 'Q' type='text'  id='Q'>" . "</div>";
                     }
                     echo "</form>";
                 } else {
