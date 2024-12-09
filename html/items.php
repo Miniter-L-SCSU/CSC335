@@ -24,7 +24,7 @@
             </a>
         </div>
 
-        <div class="center">
+        <div>
             <?php
                 include './connect_to_db.php';
 
@@ -34,20 +34,27 @@
 
                 $conn = get_db_connection($db_name);
 
-                $stmt = $conn->prepare("SELECT item_id, item_name, price, available_quantity FROM Item");
+                $stmt = $conn->prepare("SELECT item_id, item_name, price, available_quantity, file_name FROM Item");
 
                 $stmt->execute();
                 $result = $stmt->get_result();
                 echo $_SESSION["username"];
 
                 if ($result->num_rows > 0) {
+                    
                     echo "<form action=\"./item_page.php\">";
+                    echo "<div class='main-content'>";
                      while($row = $result->fetch_assoc()) {   
                         //flexbox not working idk
                         // open to changing it from value = item id to item name, dunno if names could be redundant
-                        echo "<div style=\"border:solid; margin: 3px;\">" . "<button name=\"itm\" style=\"background:white; type=\"submit\" value=\"" . $row["item_id"] . "\">" . "Item Name: " . $row["item_name"] . "</button>" . " <p>" . $row["price"] . " </p><p> Available Quantity: " . $row["available_quantity"] . "</p>" . "</div>";
+                        echo "<div class = 'item-card' style=\"border:solid; margin: 3px;\">" . 
+                        "<button name=\"itm\" style=\"background:white; type=\"submit\" value=\"" . $row["item_id"] . "\">" . 
+                        "Item Name: " . $row["item_name"] . "</button>" . 
+                        "<div> <img max-width= '500' height='200' class= 'item-image' id= 'image' src='./jpg/" . $row["file_name"] . "'/> </div>" . 
+                        " <p>" . $row["price"] . " </p><p> Available Quantity: " . $row["available_quantity"] . "</p>" . "</div>";
                         
                     }
+                    echo "</div>";
                     echo "</form>";
                 } else {
                     echo "0 results";

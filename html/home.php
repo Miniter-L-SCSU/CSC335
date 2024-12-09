@@ -20,7 +20,7 @@
         <a href="cart.php">
             <button>Cart</button>
         </a>
-        <a href="login.php">
+        <a href="./login.php">
             <button type="button"> Login/Logout </button>
         </a>
         </div>
