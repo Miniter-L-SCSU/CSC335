@@ -29,7 +29,6 @@
             echo "..";
         }
 
-    
         echo "Welcome to the Shop ".$_SESSION["username"] . " : " . $_SESSION["user_id"];
         ?>
     </div>
@@ -50,7 +49,6 @@
     <div class="center">
         <p> Ideally we would have some items here...  </p>
         <!-- TODO items will go here  -->
-        <!-- add db connection if so -->
         <p><a href="./items.php">See List of Items </a></p> 
     </div>
 
