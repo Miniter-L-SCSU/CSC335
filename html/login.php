@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	// following code is broken so its commented out
 	// it attempts to grab user_id
 	
-	$stmt = $conn->prepare("SELECT username, user_id, pw FROM User WHERE username=?");
+	$stmt = $conn->prepare("SELECT username, user_id, password FROM User WHERE username=?");
 	//$stmt = $conn->prepare($sql); // this might be why the code broke oml
 	$stmt->bind_param("s", $_SESSION["username"]);
 	$stmt->execute();
@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		while($row = $result->fetch_assoc()) {
 			$_SESSION["user_id"] = $row["user_id"];
 			
-			if ($_SESSION["username"] == $row["username"] AND $_SESSION["pass"] == $row["pw"]){
+			if ($_SESSION["username"] == $row["username"] AND $_SESSION["pass"] == $row["password"]){
 				header("Location: ./home.php");
 			}
 			// ideally also add pw checking logic
