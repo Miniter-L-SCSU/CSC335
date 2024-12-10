@@ -27,6 +27,9 @@
 
     //redirect back to the item or cart page 
     header("Location: " . './cart.php');
+    $stmt->close();
+    $stmt2->close();
+    $conn->close();
 
 ?>
 
