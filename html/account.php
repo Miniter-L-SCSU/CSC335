@@ -220,21 +220,63 @@
                 echo "<p>Payments</p>";
                 echo "<p>------------</p>";
                 // renamed a few of the tables because they were keywords and that might have caused an issue? 
-                $stmt3 = $conn->prepare("SELECT card_name, right(card_num,4) 'card_num', exp_date FROM Payment WHERE user_id=?");
+                $stmt3 = $conn->prepare("SELECT pay_id, card_name, right(card_num,4) 'card_num', exp_date FROM Payment WHERE user_id=?");
                 $stmt3->bind_param("s", $_SESSION["user_id"]);
                 $stmt3->execute();
                 $result3 = $stmt3->get_result();
-                if ($result3->num_rows > 0) {
-		
-                    while($row = $result3->fetch_assoc()) {
-                        
-                        echo "<div>" . "<p> Card Name: " . $row["card_name"] . "</p>" . "<p> Card Num ending: " . $row["card_num"] . "</p>" . "<p> Expiration Date: " . $row["exp_date"] . "</p>" . "------------" . "</div>";
-                        // todo figure out how to edit info
-                    }
-                    
-                } else {
-                    echo "---";
+                echo "<label for='CC'>Credit Cards: </label>";
+                echo "<select name='CC' id='CC' onchange='hide(this.value, pre)'  onclick='foc(pre, this.value)'>";
+                $a = 1;
+                $b = "";
+                $c = "style='display: block;'";
+                $d = 1;
+                while($row = $result3->fetch_assoc()) {
+                    echo "<option value='CC".$a."' name='CC".$a."'>".$a."</option>";
+                    echo "<script> console.log('before CC $a')</script>";
+                    //if($a == 1) {
+                    //    $c = "style='display: block;'";
+                    //    echo '<script> console.log("set CC a= '.$a.' c= '.$c.'")</script>';
+                    //} 
+                    //else {
+                    //    $c = "style='display: none;'";
+                    //    echo '<script> console.log("set CC a= '.$a.' c= '.$c.'")</script>';
+                    //}
+                        $b = $b . "
+                        <div $c id='CC".$a."' name='CC".$a."' > 
+                        <form action='./updateCC.php'>
+                        <label style='padding-left:40px' for='CCname'>Card Name: </label>
+                        <input type='text' id='CCname' name='CCname' value='$row[card_name]' > <br>
+                        <label style='padding-left:40px' for='CCnum'>Card Number: </label>
+                        <input type='text' id='CCnum' name='CCnum' value='****-****-****-$row[card_num]' > <br>
+                        <label style='padding-left:40px' for='CCexp'>Expiration Date: </label>
+                        <input type='text' id='CCexp' name='CCexp' value='$row[exp_date]' > <br>
+                        <button name= 'itm' type= 'submit' value= '$row[pay_id]'>update </button> 
+                        </form>
+                        <form action='./deleteCC.php'>
+                        <button name= 'itm' type= 'submit' value= '$row[pay_id]'>delete </button> 
+                        </form>
+                        </div>";
+                    // todo figure out how to edit info
+                    $a = $a + 1;
+                    $c = "style='display: none;'";
+                    echo "<script> console.log('after CC $a')</script>";
                 }
+                echo "<option value='CC".$a."' name='CC".$a."'>add</option>";
+                echo '</select>';
+                $b = $b . "
+                <form action='./addCC.php'>
+                <div $c id='CC".$a."' name='CC".$a."' > 
+                <label style='padding-left:40px' for='CCname'>Card Name: </label>
+                <input type='text' id='CCname' name='CCname'> <br>
+                <label style='padding-left:40px' for='CCnum'>Card Number: </label>
+                <input type='text' id='CCnum' name='CCnum'> <br>
+                <label style='padding-left:40px' for='CCexp'>Expiration Date: </label>
+                <input type='text' id='CCexp' name='CCexp'> <br>
+                <button name= 'itm' type= 'submit' value= '$a'>add </button> 
+                </div>
+                </form>";        
+                echo $b;  
+
 
             ?>
 
