@@ -77,7 +77,6 @@
                 $stmt->bind_param("s", $_SESSION["user_id"]);
                 $stmt->execute();
                 $result = $stmt->get_result();
-                if ($result->num_rows > 0) {
                     echo "<label for='BA'>Billing Addresses: </label>";
                     echo "<select name='BA' id='BA' onchange='hide(this.value, pre)'  onclick='foc(pre, this.value)'>";
                     $a = 1;
@@ -96,8 +95,8 @@
                         //    echo '<script> console.log("set BA a= '.$a.' c= '.$c.'")</script>';
                         //}
                             $b = $b . "
-                            <form action='./updateBA.php'>
                             <div $c id='BA".$a."' name='BA".$a."' > 
+                            <form action='./updateBA.php'>
                             <label style='padding-left:40px' for='BAstreet'>street: </label>
                             <input type='text' id='BAstreet' name='BAstreet' value='$row[street]' > <br>
                             <label style='padding-left:40px' for='BAappt'>appt: </label>
@@ -109,8 +108,11 @@
                             <label style='padding-left:40px' for='BAzip'>zip: </label>
                             <input type='text' id='BAzip' name='BAzip' value='$row[zip]' > <br>
                             <button name= 'itm' type= 'submit' value= '$row[bill_seq]'>update </button> 
-                            </div>
-                            </form>";
+                            </form>
+                            <form action='./deleteBA.php'>
+                            <button name= 'itm' type= 'submit' value= '$row[bill_seq]'>delete </button> 
+                            </form>
+                            </div>";
                         // todo figure out how to edit info
                         $a = $a + 1;
                         $c = "style='display: none;'";
@@ -136,9 +138,7 @@
                     </div>
                     </form>";        
                     echo $b;           
-                } else {
-                    echo "---";
-                }
+
             ?>
             <?php
                 echo "<p>Shipping Addresses </p>";
@@ -148,7 +148,6 @@
                 $stmt2->bind_param("s", $_SESSION["user_id"]);
                 $stmt2->execute();
                 $result2 = $stmt2->get_result();
-                if ($result2->num_rows > 0) {
                 echo "<label for='SA'>Shipping Addresses: </label>";
                 echo "<select name='SA' id='SA' onchange='hide(this.value,pre)' onclick='foc(pre, this.value)'>";
                 $a = 1;
@@ -179,8 +178,11 @@
                         <label style='padding-left:40px' for='SAzip'>zip: </label>
                         <input type='text' id='SAzip' name='SAzip' value='$row[zip]' > <br>
                         <button name= 'itm' type= 'submit' value= '$row[ship_seq]'>update </button> 
-                        </div>
-                        </form>";
+                        </form>
+                        <form action='./deleteSA.php'>
+                        <button name= 'itm' type= 'submit' value= '$row[ship_seq]'>delete </button> 
+                        </form>
+                        </div>";
                     // todo figure out how to edit info
                     $a = $a + 1;
                     $c = "style='display: none;'";
@@ -191,7 +193,7 @@
                 echo "<option value='SA".$a."' name='SA".$a."'>add</option>";
                 echo '</select>';
                 $b = $b . "
-                <form action='./addSA'>
+                <form action='./addSA.php'>
                 <div $c id='SA".$a."' name='SA".$a."' > 
                 <label style='padding-left:40px' for='SAstreet'>street: </label>
                 <input type='text' id='SAstreet' name='SAstreet'> <br>
@@ -208,9 +210,7 @@
                 </form>";  
                 echo $b;    
 
-            } else {
-                echo "---";
-            }
+
             ?>
 
 
