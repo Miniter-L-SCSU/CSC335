@@ -23,8 +23,6 @@
                 <button>Go Back To Cart</button>
             </a>
 
-            <p> TODO: need to add all of this logic to choose shipping and billing info and add it if neededs  </p>
-            <!-- todo add all of this logic -->
             <?php
                 include './connect_to_db.php';
 
