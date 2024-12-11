@@ -45,8 +45,9 @@
 		
                     while($row = $result->fetch_assoc()) {
                         
-                        echo "<div>" . "<p> Street: " . $row["street"] . "</p>" . "<p> Appt: " . $row["appt"] . "</p>" . "<p> City: " . $row["city"] . "</p>" . "<p> State: " . $row["state_loc"] . "</p>". "<p> ZIP Code: " . $row["zip"] . "</p>" . "------------" . "</div>";
-                        // todo figure out how to edit info
+                        echo "<div>" . "<p> Order ID: " . $row["order_id"] . "</p>" . "------------" . "</div>";
+                        // todo get additional info
+                        
                     }
                     
                 } else {

@@ -58,21 +58,21 @@
                         echo "<br/> ---------- <br/>";
 
                     }
-
+                    echo "<form method='POST' action='order-placed.php'>";
                     // Select Payment
                     $stmt2 = $conn->prepare("SELECT * FROM Payment WHERE user_id = " . $_SESSION["user_id"]);
                     $stmt2->execute();
                     $result2 = $stmt2->get_result();
-                    echo "Choose a payment: ";
+                    echo "<br/>Choose a payment: ";
                     if ($result2->num_rows > 0) {
-                        echo "<select name='billing' id='billing'>";
+                        echo "<select name='payment'>";
                             
                         while($row2 = $result2->fetch_assoc()) {
                             echo "<option value='" . $row2["pay_id"] . "' >" . "Card " . $row2["pay_id"] . " -- " . $row2["card_num"] . " -- " .$row2["exp_date"] . "</option>";
                         }
                         
                         echo "</select>";
-                        echo "<br/><br/>";
+                        echo "<br/>";
                     }
                     
                     else {
@@ -82,12 +82,13 @@
                     $stmt2->close();
                     echo "<br/>";
                     // Select Shipping Address
+                    
                     $stmt3 = $conn->prepare("SELECT * FROM ShipAddr WHERE user_id = " . $_SESSION["user_id"]);
                     $stmt3->execute();
                     $result3 = $stmt3->get_result();
                     echo "Choose a Shipping Address: ";
                     if ($result3->num_rows > 0) {
-                        echo "<select name='shipping' id='shipping'>";
+                        echo "<select name='shipping' >";
                             
                         while($row3 = $result3->fetch_assoc()) {
                             echo "<option value='" . $row3["ship_seq"] . "' >" . "Address " . $row3["ship_seq"] . " -- " . $row3["street"] . " -- " . $row3["zip"] . "</option>";
@@ -107,31 +108,29 @@
                     $result4 = $stmt4->get_result();
                     echo "Choose a Billing Address: ";
                     if ($result4->num_rows > 0) {
-                        echo "<select name='billing' id='billing'>";
+                        echo "<select name='billing'>";
                             
                         while($row4 = $result4->fetch_assoc()) {
-                            echo "<option value='" . $row4["bill_seq"] . "' >" . "Address " . $row4["ship_seq"] . " -- " . $row4["street"] . " -- " . $row4["zip"] . "</option>";
+                            echo "<option value='" . $row4["bill_seq"] . "' >" . "Address " . $row4["bill_seq"] . " -- " . $row4["street"] . " -- " . $row4["zip"] . "</option>";
                         }
                         
                         echo "</select>";
                         echo "<br/><br/>";
                         $stmt4->close();
+                        
                     }
                     else {
                         // make a billing address
                         header("Location: " . './account.php');
                     }
                     $stmt->close();
-
+                    echo "<br/><br/>";
+                    echo "<input type=\"submit\" value=\"Place Order\" >";
+                    echo "</form>";
                 }
 
             ?>
             <br/>
-            <?php
-                echo "<form action='./order-placed.php'>";
-                echo "<button>Place Order</button>";
-                echo "</form>";
-            ?>
         
 
         </div>
