@@ -43,7 +43,6 @@ session_start();
 
                 $stmt->execute();
                 $result = $stmt->get_result();
-                echo $_SESSION["username"];
 
                 if ($result->num_rows > 0) {
                     

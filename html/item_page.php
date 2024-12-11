@@ -28,10 +28,7 @@
         </div>
 
          <div>
-                <p> todo develop php to show item details </p>
-                <!-- todo develop php to show item detail -->
-                <!-- note to self, details to grab, item_name, price, category, manufacturer-->
-                <!-- also add to cart button -->
+
 
                 <?php
                 include './connect_to_db.php';
