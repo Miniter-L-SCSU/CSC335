@@ -46,18 +46,83 @@
                 $stmt->execute();
                 $result = $stmt->get_result();
                 if ($result->num_rows == 0) {
+                    // empty cart, redirects bac
                     header("Location: " . './cart.php');
                     
                 } else {
-                    
+                    echo "<br/> Contents of Cart <br/>";
                     while($row = $result->fetch_assoc()) {
-                        
+                        // show items in cart
                         echo "<br/>Item: " . $row["item_id"] . " <br/>";
-                        echo "<br/>Quantity: " . $row["quantity"] . " <br/>";
-                        // t.odo add price and other stuff about the item
-                        // not to mention billing stuff
+                        echo "<br/>Quantity: " . $row["quantity"] . " <br/>";                        
+                        echo "<br/> ---------- <br/>";
 
                     }
+
+                    // Select Payment
+                    $stmt2 = $conn->prepare("SELECT * FROM Payment WHERE user_id = " . $_SESSION["user_id"]);
+                    $stmt2->execute();
+                    $result2 = $stmt2->get_result();
+                    echo "Choose a payment: ";
+                    if ($result2->num_rows > 0) {
+                        echo "<select name='billing' id='billing'>";
+                            
+                        while($row2 = $result2->fetch_assoc()) {
+                            echo "<option value='" . $row2["pay_id"] . "' >" . "Card " . $row2["pay_id"] . " -- " . $row2["card_num"] . " -- " .$row2["exp_date"] . "</option>";
+                        }
+                        
+                        echo "</select>";
+                        echo "<br/><br/>";
+                    }
+                    
+                    else {
+                        // make a payment
+                        header("Location: " . './account.php');
+                    }
+                    $stmt2->close();
+                    echo "<br/>";
+                    // Select Shipping Address
+                    $stmt3 = $conn->prepare("SELECT * FROM ShipAddr WHERE user_id = " . $_SESSION["user_id"]);
+                    $stmt3->execute();
+                    $result3 = $stmt3->get_result();
+                    echo "Choose a Shipping Address: ";
+                    if ($result3->num_rows > 0) {
+                        echo "<select name='shipping' id='shipping'>";
+                            
+                        while($row3 = $result3->fetch_assoc()) {
+                            echo "<option value='" . $row3["ship_seq"] . "' >" . "Address " . $row3["ship_seq"] . " -- " . $row3["street"] . " -- " . $row3["zip"] . "</option>";
+                        }
+                        
+                        echo "</select>";
+                        echo "<br/><br/>";
+                    }
+                    else {
+                        // make a shipping address
+                        header("Location: " . './account.php');
+                    }
+                    $stmt3->close();
+                    // Select Billing Address
+                    $stmt4 = $conn->prepare("SELECT * FROM BillAddr WHERE user_id = " . $_SESSION["user_id"]);
+                    $stmt4->execute();
+                    $result4 = $stmt4->get_result();
+                    echo "Choose a Billing Address: ";
+                    if ($result4->num_rows > 0) {
+                        echo "<select name='billing' id='billing'>";
+                            
+                        while($row4 = $result4->fetch_assoc()) {
+                            echo "<option value='" . $row4["bill_seq"] . "' >" . "Address " . $row4["ship_seq"] . " -- " . $row4["street"] . " -- " . $row4["zip"] . "</option>";
+                        }
+                        
+                        echo "</select>";
+                        echo "<br/><br/>";
+                        $stmt4->close();
+                    }
+                    else {
+                        // make a billing address
+                        header("Location: " . './account.php');
+                    }
+                    $stmt->close();
+
                 }
 
             ?>
