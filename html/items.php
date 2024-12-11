@@ -35,13 +35,14 @@ session_start();
 
                 $db_name = 'shop';
 
+                session_start();
+
                 $conn = get_db_connection($db_name);
 
                 $stmt = $conn->prepare("SELECT item_id, item_name, price, available_quantity, file_name FROM Item");
 
                 $stmt->execute();
                 $result = $stmt->get_result();
-                echo $_SESSION["username"];
 
                 if ($result->num_rows > 0) {
                     

@@ -10,7 +10,7 @@
     $item_id = $_GET["itm"];
     $item_Q = $_GET["Q"];
 
-    $sql = "insert into Cart (user_id,item_id,quantity)  values(" . $item_id . ",(select user_id from User where username ='". $_SESSION["username"] ."' ), " . $item_Q . " );";
+    $sql = "insert into Cart (user_id,item_id,quantity)  values(" . "(select user_id from User where username ='". $_SESSION["username"] ."' ), " . $item_id . ", " . $item_Q . " );";
     $stmt = $conn->prepare($sql);
     
     $stmt->execute();

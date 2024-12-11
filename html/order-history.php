@@ -32,6 +32,28 @@
 
                 $conn = get_db_connection($db_name);
 
+                session_start();
+
+                echo "<p>Orders </p>";
+                // renamed a few of the tables because they were keywords and that might have caused an issue? 
+                // todo fix
+                $stmt = $conn->prepare("SELECT order_id, delivery_time, ship_seq, bill_seq, pay_id FROM Orders WHERE user_id=?");
+                $stmt->bind_param("s", $_SESSION["user_id"]);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+		
+                    while($row = $result->fetch_assoc()) {
+                        
+                        echo "<div>" . "<p> Order ID: " . $row["order_id"] . "</p>" . "------------" . "</div>";
+                        // todo get additional info
+                        
+                    }
+                    
+                } else {
+                    echo "---";
+                }
+
             ?>
             <!-- todo php to fetch info like username, full name, for viewing and editing -->
         </div>

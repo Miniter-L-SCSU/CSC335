@@ -6,9 +6,30 @@
 
 <body>
     <div class="center">
-        <?php
-            session_start();
-            echo "Welcome to the Shop ".$_SESSION["username"] . $_SESSION["user_id"];
+    <?php
+        include './connect_to_db.php';
+
+        $db_name = 'shop';
+
+        $conn = get_db_connection($db_name);
+
+        session_start();
+
+        $stmt = $conn->prepare("SELECT user_id, username FROM User WHERE username=?");
+        $stmt->bind_param("s", $_SESSION["username"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+		
+            while($row = $result->fetch_assoc()) {
+                $_SESSION["user_id"] = $row["user_id"]; // idk if theres a better way to do this
+            }
+                    
+        } else {
+            echo "..";
+        }
+
+        echo "Welcome to the Shop ".$_SESSION["username"] . " : " . $_SESSION["user_id"];
         ?>
     </div>
     <div>
@@ -28,7 +49,6 @@
     <div class="center">
         <p> Ideally we would have some items here...  </p>
         <!-- TODO items will go here  -->
-        <!-- add db connection if so -->
         <p><a href="./items.php">See List of Items </a></p> 
     </div>
 
